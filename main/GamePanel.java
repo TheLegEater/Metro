@@ -27,11 +27,8 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameThread;
     Player player = new Player(this, keyH);
     Player2 player2 = new Player2(this, keyH);
+    
 
-    // Set player default postion
-    int playerX = 100;
-    int playerY = 100;
-    int playerSpeed = 4;
 
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
