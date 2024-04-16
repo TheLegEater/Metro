@@ -17,4 +17,5 @@ public class Entity {
     public boolean collisionOn = false;
     public int worldX;
     public int worldY;
+    public int grav;
 }

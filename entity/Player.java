@@ -23,14 +23,15 @@ public class Player extends Entity{
     public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
-        solidArea = new Rectangle(0, 0, 48, 48);
+        solidArea = new Rectangle(0, 0, gp.tileSize, gp.tileSize);
         setDefaultValues();
         getPlayerImage();
     }
     public void setDefaultValues(){
         worldX = 100;
-        worldY = 100;
+        worldY = 200;
         speed = 4;
+        grav = 1;
         direction = "standR";
     }
     public void getPlayerImage(){

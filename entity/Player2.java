@@ -23,7 +23,7 @@ public class Player2 extends Entity{
     public Player2(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
-        solidArea = new Rectangle(0, 0, 48, 48);
+        solidArea = new Rectangle(0, 0, gp.tileSize, gp.tileSize);
         setDefaultValues();
         getPlayerImage();
     }
@@ -113,10 +113,10 @@ public class Player2 extends Entity{
         }
 
     }
-  public int getX(){
+  public int getX2(){
     return worldX;
   }
-  public int getY(){
+  public int getY2(){
     return worldY;
   }
     public void draw(Graphics2D g2){
