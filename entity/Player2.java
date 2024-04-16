@@ -1,6 +1,7 @@
 package entity;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 //import java.awt.Image;
 import java.awt.image.BufferedImage;
 //import java.io.File;
@@ -18,17 +19,17 @@ import main.KeyHandler;
 public class Player2 extends Entity{
     GamePanel gp;
     KeyHandler keyH;
-    
+
     public Player2(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
-
+        solidArea = new Rectangle(0, 0, 48, 48);
         setDefaultValues();
         getPlayerImage();
     }
     public void setDefaultValues(){
-        x = 100;
-        y = 100;
+        worldX = 100;
+        worldY = 100;
         speed = 4;
         direction = "standR";
     }
@@ -44,7 +45,7 @@ public class Player2 extends Entity{
             walkR2 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-2.png"));
             walkL3 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC L-3.png"));
             walkR3 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-3.png"));
-            
+
             //walkR = ImageIO.read(new File("/Sprite Cranberry/Ob WC R.gif"));
         }catch(IOException e){
             e.printStackTrace();
@@ -55,19 +56,34 @@ public class Player2 extends Entity{
         if(keyH.upPressed2 == true || keyH.downPressed2 == true || keyH.rightPressed2 == true || keyH.leftPressed2 == true){
             if(keyH.upPressed2 == true){
                 direction = "standR";
-                y -= speed;
             }
             else if(keyH.downPressed2 == true){
                 direction = "standL";
-                y += speed;
             }
             else if(keyH.leftPressed2 == true){
                 direction = "walkL";
-                x -= speed;
             }
             else if(keyH.rightPressed2 == true){
-                direction = "walkR";
-                x += speed;
+                direction = "walkR";               
+            }
+            collisionOn = false;
+            gp.cChecker.checkTile(this);
+
+            if(collisionOn == false){
+                switch(direction){
+                case "standR":
+                    worldY -= speed;
+                    break;
+                case "standL":
+                    worldY += speed;
+                    break;
+                case "walkL":
+                    worldX -= speed;
+                    break;
+                case "walkR":
+                    worldX += speed;
+                    break;
+                }
             }
 
             spriteCounter++;
@@ -87,10 +103,22 @@ public class Player2 extends Entity{
                 spriteCounter = 0;
             }  
         }else{
+            //if(x > player2.x){
+                //direction = "standL";
+            //}
+            //else if(x < Player2.x){
+                //direction = "standR";
+            //}
             direction = "standL";
         }
-        
+
     }
+  public int getX(){
+    return worldX;
+  }
+  public int getY(){
+    return worldY;
+  }
     public void draw(Graphics2D g2){
         //g2.setColor(Color.white);
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);
@@ -126,7 +154,7 @@ public class Player2 extends Entity{
             break;
         }
         //g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(image, x, y, 96, 96, null);
-      
+        g2.drawImage(image, worldX, worldY, gp.tileSize, gp.tileSize, null);
+
     }
 }

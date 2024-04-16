@@ -113,6 +113,12 @@ public class Player extends Entity{
         }
         
     }
+  public int getX(){
+    return worldX;
+  }
+  public int getY(){
+    return worldY;
+  }
     public void draw(Graphics2D g2){
         //g2.setColor(Color.white);
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);
