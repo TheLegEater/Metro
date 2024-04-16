@@ -9,7 +9,7 @@ import main.GamePanel;
 
 public class TileManager {
     GamePanel gp;
-    Tile[] tile;
+    public Tile[] tile;
 
     public TileManager(GamePanel gp){
         this.gp = gp;
@@ -20,6 +20,7 @@ public class TileManager {
         try{
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Wall Test.png"));
+            tile[0].collision = true;
             
             //tile[1] = new Tile();
             //tile[1].image = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/WallTest.png"));
@@ -31,6 +32,23 @@ public class TileManager {
         }
     }
     public void draw(Graphics2D g2){
-        g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
+        int col = 0;
+        int row = 0;
+        int x = 0;
+        int y = 0;
+        g2.drawImage(tile[0].image, 200, 200, gp.tileSize, gp.tileSize, null);
+        //while(col < gp.maxScreenCol && row < gp.maxScreenRow){
+            //g2.drawImage(tile[0].image, x, y, gp.tileSize, gp.tileSize, null);
+            //col++;
+            //x += gp.tileSize;
+            //if(col == gp.maxScreenCol){
+                //col = 0;
+                //x = 0;
+                //row++;
+                //y += gp.tileSize;
+            //}
+        //}
+        
+        
     }
 }
