@@ -31,6 +31,7 @@ public class Player2 extends Entity{
         worldX = 100;
         worldY = 100;
         speed = 4;
+        grav = 1;
         direction = "standR";
     }
     public void getPlayerImage(){
@@ -52,6 +53,10 @@ public class Player2 extends Entity{
         }
     }
     public void update(){
+      
+        if(worldY != 525){
+          worldY += grav;
+        }
         //if else makes it so multiple inputs cannot be done at once
         if(keyH.upPressed2 == true || keyH.downPressed2 == true || keyH.rightPressed2 == true || keyH.leftPressed2 == true){
             if(keyH.upPressed2 == true){

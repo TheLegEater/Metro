@@ -22,9 +22,14 @@ public class CollisionChecker {
         int entityBottomRow = entityBottomWorldY/gp.tileSize;
 
         int tileNum1, tileNum2;
-        if(gp.player.getX() == gp.player2.getX2()){
-          entity.collisionOn = true;
-        }
+        //if(gp.player.getX() == gp.player2.getX2()){
+          //entity.collisionOn = true;
+        //}
+        
+
+
+
+      
         switch(entity.direction){
         case "standR":
             //entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
@@ -40,10 +45,15 @@ public class CollisionChecker {
         case "walkL":
             if(gp.tileM.tile[0].collision == true  && entity.worldX == 0){
                 entity.collisionOn = true;
+            if(gp.player.getX() == gp.player2.getX2()){
+                entity.collisionOn = true;
+            }
             }
             break;
         case "walkR":
-            
+            if(gp.player.getX() == gp.player2.getX2()){
+              entity.collisionOn = true;
+            } 
             break;
         }
     }

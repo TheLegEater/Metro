@@ -3,6 +3,7 @@ package entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 //import java.awt.Image;
+
 import java.awt.image.BufferedImage;
 //import java.io.File;
 import java.io.IOException;
@@ -54,6 +55,19 @@ public class Player extends Entity{
     }
     public void update(){
         //if else makes it so multiple inputs cannot be done at once
+        //while(worldY < 525){
+          //try {
+              //Thread.sleep(100000000);
+              //worldY += 1;
+          //} catch (InterruptedException e) {
+              // Handle the exception
+              //e.printStackTrace();
+         // }
+        if(worldY != 525){
+          worldY += grav;
+        }
+          
+        //}
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed == true){
             if(keyH.upPressed == true){
                 direction = "standR";
