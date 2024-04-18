@@ -29,10 +29,11 @@ public class Player extends Entity{
         getPlayerImage();
     }
     public void setDefaultValues(){
-        worldX = 100;
-        worldY = 200;
+        worldX = 300;
+        worldY = 100;
         speed = 4;
         grav = 1;
+        comInput = 0;
         direction = "standR";
     }
     public void getPlayerImage(){
@@ -53,21 +54,26 @@ public class Player extends Entity{
             e.printStackTrace();
         }
     }
-    public void update(){
-        //if else makes it so multiple inputs cannot be done at once
-        //while(worldY < 525){
-          //try {
-              //Thread.sleep(100000000);
-              //worldY += 1;
-          //} catch (InterruptedException e) {
-              // Handle the exception
-              //e.printStackTrace();
-         // }
+    public void update(){       
         if(worldY != 525){
           worldY += grav;
         }
-          
-        //}
+        switch(comInput){
+        case 2:
+          case 3:
+            case 6:
+              System.out.println("comInput");
+              comInput = 0;
+            break;
+        
+            
+            
+        }
+        if(keyH.att1Pressed){
+          System.out.println("input");
+        }
+        
+        //if else makes it so multiple inputs cannot be done at once
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed == true){
             if(keyH.upPressed == true){
                 direction = "standR";
