@@ -37,38 +37,15 @@ public class Player extends Entity{
         direction = "standR";
     }
     public void getPlayerImage(){
-        try{
 
-            standR = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob ST R.png"));
-            standL = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob ST L.png"));
-
-            walkL = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC L-1.png"));
-            walkR = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-1.png"));
-            walkL2 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC L-2.png"));
-            walkR2 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-2.png"));
-            walkL3 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC L-3.png"));
-            walkR3 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-3.png"));
-            
-            //walkR = ImageIO.read(new File("/Sprite Cranberry/Ob WC R.gif"));
-        }catch(IOException e){
-            e.printStackTrace();
-        }
     }
     public void update(){       
         if(worldY != 525){
           worldY += grav;
         }
-        switch(comInput){
-        case 2:
-          case 3:
-            case 6:
-              System.out.println("comInput");
-              comInput = 0;
-            break;
         
             
-            
-        }
+        
         if(keyH.att1Pressed){
           System.out.println("input");
         }
@@ -77,15 +54,19 @@ public class Player extends Entity{
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed == true){
             if(keyH.upPressed == true){
                 direction = "standR";
+                comInput = 8;
             }
             else if(keyH.downPressed == true){
                 direction = "standL";
+                comInput = 2;
             }
             else if(keyH.leftPressed == true){
                 direction = "walkL";
+                comInput = 4;
             }
             else if(keyH.rightPressed == true){
-                direction = "walkR";               
+                direction = "walkR";
+                comInput = 6;
             }
             collisionOn = false;
             gp.cChecker.checkTile(this);
@@ -96,7 +77,7 @@ public class Player extends Entity{
                     worldY -= speed;
                     break;
                 case "standL":
-                    worldY += speed;
+                    //worldY += speed;
                     break;
                 case "walkL":
                     worldX -= speed;

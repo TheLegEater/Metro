@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import entity.Player;
 import entity.Player2;
+import entity.Ob;
 import tile.TileManager;
 
 import java.awt.Color;
@@ -29,7 +30,7 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
-    Player player = new Player(this, keyH);
+    Ob player = new Ob(this, keyH);
     Player2 player2 = new Player2(this, keyH);
     
 
