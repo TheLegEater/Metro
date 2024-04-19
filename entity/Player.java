@@ -35,6 +35,7 @@ public class Player extends Entity{
         grav = 1;
         comInput = 0;
         direction = "standR";
+        looking = "right";
     }
     public void getPlayerImage(){
 
@@ -68,13 +69,21 @@ public class Player extends Entity{
                 direction = "walkR";
                 comInput = 6;
             }
+        }else{
+          if(looking == "right"){
+            direction = "standR";
+          }else if(looking == "left"){
+            direction = "standL";
+          }
+        }
+    
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
             if(collisionOn == false){
                 switch(direction){
                 case "standR":
-                    worldY -= speed;
+                    //worldY -= speed;
                     break;
                 case "standL":
                     //worldY += speed;
@@ -103,18 +112,12 @@ public class Player extends Entity{
                     spriteNum = 1;
                 }
                 spriteCounter = 0;
-            }  
-        }else{
-            //if(x > player2.x){
-                //direction = "standL";
-            //}
-            //else if(x < Player2.x){
-                //direction = "standR";
-            //}
-            direction = "standL";
+            }else{
+               direction = "standR";
         }
-        
     }
+        
+    
   public int getX(){
     return worldX;
   }
