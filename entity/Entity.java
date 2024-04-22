@@ -20,4 +20,5 @@ public class Entity {
     public int worldX;
     public int worldY;
     public int grav;
+    public int playerVal;
 }

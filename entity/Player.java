@@ -22,9 +22,10 @@ public class Player extends Entity{
     KeyHandler keyH;
     
     
-    public Player(GamePanel gp, KeyHandler keyH, int x, int y){
+    public Player(GamePanel gp, KeyHandler keyH, int x, int y, int p){
         this.gp = gp;
         this.keyH = keyH;
+        playerVal = p;
         worldX = x;
         worldY = y;
         solidArea = new Rectangle(0, 0, gp.tileSize, gp.tileSize);
@@ -54,30 +55,32 @@ public class Player extends Entity{
         }
         
         //if else makes it so multiple inputs cannot be done at once
-        if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed == true){
-            if(keyH.upPressed == true){
+        if(playerVal == 1){
+            if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed == true){
+                if(keyH.upPressed == true){
+                    direction = "standR";
+                    comInput = 8;
+                }
+                else if(keyH.downPressed == true){
+                    direction = "standL";
+                    comInput = 2;
+                }
+                else if(keyH.leftPressed == true){
+                    direction = "walkL";
+                    comInput = 4;
+                }
+                else if(keyH.rightPressed == true){
+                    direction = "walkR";
+                    comInput = 6;
+                }
+            }else{
+            if(looking == "right"){
                 direction = "standR";
-                comInput = 8;
-            }
-            else if(keyH.downPressed == true){
+            }else{ //if(looking == "left"){
                 direction = "standL";
-                comInput = 2;
             }
-            else if(keyH.leftPressed == true){
-                direction = "walkL";
-                comInput = 4;
             }
-            else if(keyH.rightPressed == true){
-                direction = "walkR";
-                comInput = 6;
-            }
-        }else{
-          if(looking == "right"){
-            direction = "standR";
-          }else{ //if(looking == "left"){
-            direction = "standL";
-          }
-        }
+    }
     
             collisionOn = false;
             gp.cChecker.checkTile(this);
