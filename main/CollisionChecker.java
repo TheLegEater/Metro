@@ -2,7 +2,7 @@ package main;
 
 import entity.Entity;
 import entity.Player;
-import entity.Player2;
+
 
 public class CollisionChecker {
     GamePanel gp;

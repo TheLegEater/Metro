@@ -4,7 +4,7 @@ package main;
 import javax.swing.JPanel; 
 
 import entity.Player;
-import entity.Player2;
+
 import entity.Ob;
 import tile.TileManager;
 

@@ -74,7 +74,7 @@ public class Player extends Entity{
         }else{
           if(looking == "right"){
             direction = "standR";
-          }else if(looking == "left"){
+          }else{ //if(looking == "left"){
             direction = "standL";
           }
         }

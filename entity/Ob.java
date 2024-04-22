@@ -31,6 +31,7 @@ public class Ob extends Player{
       grav = 1;
       comInput = 0;
       direction = "standR";
+      looking = "right";
   }
   public void getPlayerImage(){
       try{
