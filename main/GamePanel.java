@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import entity.Player;
 import entity.Player2;
+import entity.Ob;
 import tile.TileManager;
 
 import java.awt.Color;
@@ -29,8 +30,8 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler keyH = new KeyHandler();
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
-    Player player = new Player(this, keyH);
-    Player2 player2 = new Player2(this, keyH);
+    Ob player = new Ob(this, keyH, 300, 100);
+    //Player2 player2 = new Player2(this, keyH);
     
 
 
@@ -76,7 +77,7 @@ public class GamePanel extends JPanel implements Runnable{
     }
     public void update(){
         player.update();
-        player2.update();
+        //player2.update();
     }
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -84,7 +85,7 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
         tileM.draw(g2);
         player.draw(g2);
-        player2.draw(g2);
+        //player2.draw(g2);
         g2.dispose();
     }
 

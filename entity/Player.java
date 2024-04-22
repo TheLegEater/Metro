@@ -3,6 +3,7 @@ package entity;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 //import java.awt.Image;
+//balls
 import java.awt.image.BufferedImage;
 //import java.io.File;
 import java.io.IOException;
@@ -20,62 +21,74 @@ public class Player extends Entity{
     GamePanel gp;
     KeyHandler keyH;
     
-    public Player(GamePanel gp, KeyHandler keyH){
+    
+    public Player(GamePanel gp, KeyHandler keyH, int x, int y){
         this.gp = gp;
         this.keyH = keyH;
-        solidArea = new Rectangle(0, 0, 48, 48);
+        worldX = x;
+        worldY = y;
+        solidArea = new Rectangle(0, 0, gp.tileSize, gp.tileSize);
         setDefaultValues();
         getPlayerImage();
     }
     public void setDefaultValues(){
-        worldX = 100;
-        worldY = 100;
+        
         speed = 4;
+        grav = 1;
+        comInput = 0;
         direction = "standR";
+        looking = "right";
     }
     public void getPlayerImage(){
-        try{
 
-            standR = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob ST R.png"));
-            standL = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob ST L.png"));
-
-            walkL = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC L-1.png"));
-            walkR = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-1.png"));
-            walkL2 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC L-2.png"));
-            walkR2 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-2.png"));
-            walkL3 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC L-3.png"));
-            walkR3 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-3.png"));
-            
-            //walkR = ImageIO.read(new File("/Sprite Cranberry/Ob WC R.gif"));
-        }catch(IOException e){
-            e.printStackTrace();
-        }
     }
-    public void update(){
+    public void update(){       
+        if(worldY != 525){
+          worldY += grav;
+        }
+        
+            
+        
+        if(keyH.att1Pressed){
+          System.out.println("input");
+        }
+        
         //if else makes it so multiple inputs cannot be done at once
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed == true){
             if(keyH.upPressed == true){
                 direction = "standR";
+                comInput = 8;
             }
             else if(keyH.downPressed == true){
                 direction = "standL";
+                comInput = 2;
             }
             else if(keyH.leftPressed == true){
                 direction = "walkL";
+                comInput = 4;
             }
             else if(keyH.rightPressed == true){
-                direction = "walkR";               
+                direction = "walkR";
+                comInput = 6;
             }
+        }else{
+          if(looking == "right"){
+            direction = "standR";
+          }else if(looking == "left"){
+            direction = "standL";
+          }
+        }
+    
             collisionOn = false;
             gp.cChecker.checkTile(this);
 
             if(collisionOn == false){
                 switch(direction){
                 case "standR":
-                    worldY -= speed;
+                    //worldY -= speed;
                     break;
                 case "standL":
-                    worldY += speed;
+                    //worldY += speed;
                     break;
                 case "walkL":
                     worldX -= speed;
@@ -101,18 +114,18 @@ public class Player extends Entity{
                     spriteNum = 1;
                 }
                 spriteCounter = 0;
-            }  
-        }else{
-            //if(x > player2.x){
-                //direction = "standL";
-            //}
-            //else if(x < Player2.x){
-                //direction = "standR";
-            //}
-            direction = "standL";
+            }else{
+
         }
-        
     }
+        
+    
+  public int getX(){
+    return worldX;
+  }
+  public int getY(){
+    return worldY;
+  }
     public void draw(Graphics2D g2){
         //g2.setColor(Color.white);
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);

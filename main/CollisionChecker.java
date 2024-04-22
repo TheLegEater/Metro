@@ -1,6 +1,8 @@
 package main;
 
 import entity.Entity;
+import entity.Player;
+import entity.Player2;
 
 public class CollisionChecker {
     GamePanel gp;
@@ -20,19 +22,38 @@ public class CollisionChecker {
         int entityBottomRow = entityBottomWorldY/gp.tileSize;
 
         int tileNum1, tileNum2;
+        //if(gp.player.getX() == gp.player2.getX2()){
+          //entity.collisionOn = true;
+        //}
+        
 
+
+
+      
         switch(entity.direction){
         case "standR":
             //entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
-            if(gp.tileM.tile[0].collision == true  && entity.worldY == 200 && entity.worldX == 200){
+            if(gp.tileM.tile[0].collision == true  && entity.worldY == 0){
                 entity.collisionOn = true;
             }
             break;
         case "standL":
+            if(gp.tileM.tile[0].collision == true  && entity.worldY == 0){
+                entity.collisionOn = true;
+            }
             break;
         case "walkL":
+            if(gp.tileM.tile[0].collision == true  && entity.worldX == 0){
+                entity.collisionOn = true;
+            //if(gp.player.getX() == gp.player2.getX2()){
+                //entity.collisionOn = true;
+            //}
+            }
             break;
         case "walkR":
+            //if(gp.player.getX() == gp.player2.getX2()){
+              //entity.collisionOn = true;
+            //} 
             break;
         }
     }
