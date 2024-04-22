@@ -21,16 +21,18 @@ public class Player extends Entity{
     GamePanel gp;
     KeyHandler keyH;
     
-    public Player(GamePanel gp, KeyHandler keyH){
+    
+    public Player(GamePanel gp, KeyHandler keyH, int x, int y){
         this.gp = gp;
         this.keyH = keyH;
+        worldX = x;
+        worldY = y;
         solidArea = new Rectangle(0, 0, gp.tileSize, gp.tileSize);
         setDefaultValues();
         getPlayerImage();
     }
     public void setDefaultValues(){
-        worldX = 300;
-        worldY = 100;
+        
         speed = 4;
         grav = 1;
         comInput = 0;
@@ -113,7 +115,7 @@ public class Player extends Entity{
                 }
                 spriteCounter = 0;
             }else{
-               direction = "standR";
+
         }
     }
         

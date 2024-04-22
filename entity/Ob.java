@@ -18,17 +18,15 @@ public class Ob extends Player{
   GamePanel gp;
   KeyHandler keyH;
 
-  public Ob(GamePanel gp, KeyHandler keyH){
-    super(gp, keyH);
-    //this.gp = gp;
-    //this.keyH = keyH;
+  public Ob(GamePanel gp, KeyHandler keyH, int x, int y){
+    super(gp, keyH, x, y);
     solidArea = new Rectangle(0, 0, gp.tileSize, gp.tileSize);
     setDefaultValues();
     getPlayerImage();
   }
   public void setDefaultValues(){
-      worldX = 300;
-      worldY = 100;
+      //worldX = 300;
+      //worldY = 100;
       speed = 4;
       grav = 1;
       comInput = 0;
