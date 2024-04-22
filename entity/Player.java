@@ -38,7 +38,12 @@ public class Player extends Entity{
         grav = 1;
         comInput = 0;
         direction = "standR";
-        looking = "right";
+        if(playerVal == 1){
+            looking = "right";
+        }else if(playerVal == 2){
+            looking = "left";
+        }
+        
     }
     public void getPlayerImage(){
 
@@ -76,7 +81,7 @@ public class Player extends Entity{
             }else{
             if(looking == "right"){
                 direction = "standR";
-            }else{ //if(looking == "left"){
+            }else if(looking == "left"){
                 direction = "standL";
             }
             }
@@ -101,7 +106,7 @@ public class Player extends Entity{
             }else{
             if(looking == "right"){
                 direction = "standR";
-            }else{ //if(looking == "left"){
+            }else if(looking == "left"){
                 direction = "standL";
             }
             }
