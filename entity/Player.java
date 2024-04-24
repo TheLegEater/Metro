@@ -80,33 +80,7 @@ public class Player extends Entity{
                 direction = "standL";
             }
             }
-        }else if(playerVal == 2){
-            if(keyH.upPressed2 == true || keyH.downPressed2 == true || keyH.rightPressed2 == true || keyH.leftPressed2 == true){
-                if(keyH.upPressed2 == true){
-                    direction = "standR";
-                    comInput = 8;
-                }
-                else if(keyH.downPressed2 == true){
-                    direction = "standL";
-                    comInput = 2;
-                }
-                else if(keyH.leftPressed2 == true){
-                    direction = "walkL";
-                    comInput = 4;
-                }
-                else if(keyH.rightPressed2 == true){
-                    direction = "walkR";
-                    comInput = 6;
-                }
-            }else{
-            if(looking == "right"){
-                direction = "standR";
-            }else{ //if(looking == "left"){
-                direction = "standL";
-            }
-            }
-
-        }
+    }
     
             collisionOn = false;
             gp.cChecker.checkTile(this);
