@@ -18,8 +18,8 @@ public class Ob extends Player{
   GamePanel gp;
   KeyHandler keyH;
 
-  public Ob(GamePanel gp, KeyHandler keyH, int x, int y, int p){
-    super(gp, keyH, x, y, p);
+  public Ob(GamePanel gp, KeyHandler keyH, int x, int y){
+    super(gp, keyH, x, y);
     solidArea = new Rectangle(0, 0, gp.tileSize, gp.tileSize);
     setDefaultValues();
     getPlayerImage();
