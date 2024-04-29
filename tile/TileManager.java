@@ -26,7 +26,7 @@ public class TileManager {
     public void getTileImage(){
         try{
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Wall Test3.png"));
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Wall Test4.png"));
             
             
             tile[1] = new Tile();
