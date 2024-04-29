@@ -8,6 +8,7 @@ public class Entity {
     //public int y;
     public int speed;
     public int health;
+    public int acc;
     public int comInput;
     public BufferedImage standR, standL, walkR, walkL, walkR2, walkL2, walkR3, walkL3;
     public String direction;

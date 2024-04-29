@@ -33,6 +33,7 @@ public class Player extends Entity{
     }
     public void setDefaultValues(){
         health = 5;
+        acc = 0;
         speed = 4;
         grav = 1;
         comInput = 0;
@@ -57,15 +58,15 @@ public class Player extends Entity{
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed == true){
             if(keyH.upPressed == true){
                 direction = "standR";
-                comInput = 8;
+              
             }
             else if(keyH.downPressed == true){
                 direction = "standL";
-                comInput = 2;
+                
             }
             else if(keyH.leftPressed == true){
                 direction = "walkL";
-                comInput = 4;
+                
             }
             else if(keyH.rightPressed == true){
                 direction = "walkR";
