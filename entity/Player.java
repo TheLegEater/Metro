@@ -32,7 +32,7 @@ public class Player extends Entity{
         getPlayerImage();
     }
     public void setDefaultValues(){
-        
+        health = 5;
         speed = 4;
         grav = 1;
         comInput = 0;
