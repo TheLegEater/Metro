@@ -22,7 +22,7 @@ public class Impact extends Entity{
         getPlayerImage();
     }
     public void setDefaultValues(){
-        health = 5;
+        health = 100;
         acc = 0;
         speed = 4;
         grav = 1;
@@ -49,7 +49,15 @@ public class Impact extends Entity{
     }
   
     public void update(){
-      
+      if(worldX != -100){
+        health--;
+        if(health <= 0){
+          worldX = -100;
+          health = 100;
+        }
+        
+      }
+      //System.out.print(health);
     }
     public void draw(Graphics2D g2){
       BufferedImage image = null;
