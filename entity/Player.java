@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import entity.Impact;
 
 public class Player extends Entity{
     GamePanel gp;
@@ -51,7 +52,7 @@ public class Player extends Entity{
             
         
         if(keyH.att1Pressed){
-          System.out.println("input");
+          gp.impact.spawn(getX(), getY());
         }
         
         //if else makes it so multiple inputs cannot be done at once

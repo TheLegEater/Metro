@@ -10,7 +10,7 @@ public class Entity {
     public int health;
     public int acc;
     public int comInput;
-    public BufferedImage standR, standL, walkR, walkL, walkR2, walkL2, walkR3, walkL3;
+    public BufferedImage standR, standL, walkR, walkL, walkR2, walkL2, walkR3, walkL3, stable, unstable;
     public String direction;
     public String action;
     public String looking;
