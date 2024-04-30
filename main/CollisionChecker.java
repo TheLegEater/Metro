@@ -33,28 +33,31 @@ public class CollisionChecker {
         switch(entity.direction){
         case "standR":
             //entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
-            if(gp.tileM.tile[0].collision == true  && entity.worldY == 0){
+            if(gp.tileM.tile[2].collision == true  && entity.worldY == 0){
                 entity.collisionOn = true;
             }
             break;
         case "standL":
-            if(gp.tileM.tile[0].collision == true  && entity.worldY == 0){
+            if(gp.tileM.tile[2].collision == true  && entity.worldY == 0){
                 entity.collisionOn = true;
             }
             break;
         case "walkL":
-            if(gp.tileM.tile[0].collision == true  && entity.worldX == 0){
-                entity.collisionOn = true;
+            if(gp.tileM.tile[2].collision == true  && entity.worldX <= gp.screenWidth/2){
+                //entity.collisionOn = true;
             //if(gp.player.getX() == gp.player2.getX2()){
                 //entity.collisionOn = true;
             //}
             }
             break;
         case "walkR":
+            if(gp.tileM.tile[2].collision == true  && entity.worldX >= gp.screenWidth/2){
+              //entity.collisionOn = true;
             //if(gp.player.getX() == gp.player2.getX2()){
               //entity.collisionOn = true;
             //} 
             break;
         }
     }
+}
 }

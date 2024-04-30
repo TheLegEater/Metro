@@ -34,7 +34,7 @@ public class Player extends Entity{
     }
     public void setDefaultValues(){
         health = 5;
-        acc = 0;
+        acc = 1;
         speed = 4;
         grav = 1;
         comInput = 0;
@@ -88,15 +88,23 @@ public class Player extends Entity{
                 switch(direction){
                 case "standR":
                     //worldY -= speed;
+                    acc--;
                     break;
                 case "standL":
                     //worldY += speed;
+                    acc--;
                     break;
                 case "walkL":
                     worldX -= speed;
+                    if(acc < 4){
+                      acc++;
+                    }
                     break;
                 case "walkR":
                     worldX += speed;
+                    if(acc < 4){
+                      acc++;
+                    }
                     break;
                 }
             }
