@@ -34,12 +34,12 @@ public class CollisionChecker {
         case "standR":
             //entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
             if(gp.tileM.tile[2].collision == true  && entity.worldY == 0){
-                entity.collisionOn = true;
+                //entity.collisionOn = true;
             }
             break;
         case "standL":
             if(gp.tileM.tile[2].collision == true  && entity.worldY == 0){
-                entity.collisionOn = true;
+                //entity.collisionOn = true;
             }
             break;
         case "walkL":
