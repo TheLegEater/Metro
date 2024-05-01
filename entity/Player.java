@@ -87,11 +87,11 @@ public class Player extends Entity{
             if(collisionOn == false){
                 switch(direction){
                 case "standR":
-                    //worldY -= speed;
+                    worldY -= speed;
                     acc--;
                     break;
                 case "standL":
-                    //worldY += speed;
+                    worldY += speed;
                     acc--;
                     break;
                 case "walkL":
