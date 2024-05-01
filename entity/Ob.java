@@ -28,7 +28,7 @@ public class Ob extends Player{
       //worldX = 300;
       //worldY = 100;
       speed = 4;
-      grav = 0;
+      grav = 1;
       comInput = 0;
       direction = "standR";
       looking = "right";

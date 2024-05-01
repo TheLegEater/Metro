@@ -37,6 +37,7 @@ public class Player extends Entity{
         acc = 1;
         speed = 4;
         grav = 1;
+        jumpVal = 0;
         comInput = 0;
         direction = "standR";
         looking = "right";
@@ -48,6 +49,9 @@ public class Player extends Entity{
         if(worldY != 525){
           worldY += grav;
         }
+        if(jumpVal > 0){
+          jumpVal--;
+        }
         
             
         
@@ -58,8 +62,10 @@ public class Player extends Entity{
         //if else makes it so multiple inputs cannot be done at once
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed == true){
             if(keyH.upPressed == true){
-                direction = "standR";
-              
+                if(jumpVal == 0){
+                direction = "jump";
+                jumpVal = 300;
+              }
             }
             else if(keyH.downPressed == true){
                 direction = "standL";
@@ -86,12 +92,12 @@ public class Player extends Entity{
 
             if(collisionOn == false){
                 switch(direction){
-                case "standR":
+                case "jump":
                     worldY -= speed;
                     acc--;
                     break;
                 case "standL":
-                    worldY += speed;
+                    //worldY += speed;
                     acc--;
                     break;
                 case "walkL":
