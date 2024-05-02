@@ -28,7 +28,7 @@ public class Player extends Entity{
         this.keyH = keyH;
         worldX = x;
         worldY = y;
-        solidArea = new Rectangle(0, 0, gp.tileSize, gp.tileSize);
+        solidArea = new Rectangle(300, 100, 48, 48);
         setDefaultValues();
         getPlayerImage();
     }
@@ -193,6 +193,6 @@ public class Player extends Entity{
         }
         //g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
         g2.drawImage(image, worldX, worldY, gp.tileSize, gp.tileSize, null);
-      
+        g2.draw(solidArea);
     }
 }
