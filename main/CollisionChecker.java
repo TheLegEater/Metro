@@ -1,4 +1,4 @@
-package main;
+ package main;
 
 import entity.Entity;
 import entity.Player;
@@ -21,7 +21,7 @@ public class CollisionChecker {
         int entityTopRow = entityTopWorldY/gp.tileSize;
         int entityBottomRow = entityBottomWorldY/gp.tileSize;
 
-        int tileNum1, tileNum2;
+        int tilenum1, tilenum2;
         //if(gp.player.getX() == gp.player2.getX2()){
           //entity.collisionOn = true;
         //}
@@ -33,31 +33,51 @@ public class CollisionChecker {
         switch(entity.direction){
         case "standR":
             //entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
+            
             if(gp.tileM.tile[2].collision == true  && entity.worldY == 0){
                 //entity.collisionOn = true;
             }
             break;
         case "standL":
-            if(gp.tileM.tile[2].collision == true  && entity.worldY == 0){
-                //entity.collisionOn = true;
+            entityBottomRow = (entityBottomWorldY + entity.speed)/gp.tileSize;
+            tilenum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
+            tilenum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+            if(gp.tileM.tile[tilenum1].collision == true  || gp.tileM.tile[tilenum1].collision == true){
+                entity.collisionOn = true;
             }
             break;
         case "walkL":
-            if(gp.tileM.tile[2].collision == true  && entity.worldX <= gp.screenWidth/2){
-                //entity.collisionOn = true;
+            entityLeftCol = (entityLeftWorldX - entity.speed)/gp.tileSize;
+            tilenum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+            tilenum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
+            if(gp.tileM.tile[tilenum1].collision == true  || gp.tileM.tile[tilenum1].collision == true){
+                entity.collisionOn = true;
             //if(gp.player.getX() == gp.player2.getX2()){
                 //entity.collisionOn = true;
             //}
             }
             break;
         case "walkR":
-            if(gp.tileM.tile[2].collision == true  && entity.worldX >= gp.screenWidth/2){
-              //entity.collisionOn = true;
+            entityRightCol = (entityRightWorldX + entity.speed)/gp.tileSize;
+            tilenum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+            tilenum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+            if(gp.tileM.tile[tilenum1].collision == true  || gp.tileM.tile[tilenum1].collision == true){
+                entity.collisionOn = true;
             //if(gp.player.getX() == gp.player2.getX2()){
               //entity.collisionOn = true;
-            //} 
+            } 
+            break;
+        case "jump":
+            entityTopRow = (entityTopWorldY - entity.speed)/gp.tileSize;
+            tilenum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+            tilenum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+            if(gp.tileM.tile[tilenum1].collision == true  || gp.tileM.tile[tilenum1].collision == true){
+              entity.collisionOn = true;
+            }
             break;
         }
     }
 }
-}
+
+
+
