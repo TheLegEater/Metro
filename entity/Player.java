@@ -60,7 +60,8 @@ public class Player extends Entity{
             walkL3 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC L-3.png"));
             walkR3 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-3.png"));
 
-            jump = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Wall Test4.png"));
+            jumpR = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob Jump R.png"));
+            jumpL = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob Jump L.png"));
 
   
             //walkR = ImageIO.read(new File("/Sprite Cranberry/Ob WC R.gif"));
@@ -69,7 +70,7 @@ public class Player extends Entity{
         }
     }
     public void update(){       
-        if(worldY != 525){
+        if(worldY != 525 && collisionOn == false){
           worldY += grav;
         }
         if(jumpVal > 0){
@@ -83,16 +84,11 @@ public class Player extends Entity{
         if(keyH.att1Pressed){
           gp.impact.spawn(getX(), getY());
         }
-        
+       
         //if else makes it so multiple inputs cannot be done at once
         if(keyH.upPressed == true || keyH.downPressed == true || keyH.rightPressed == true || keyH.leftPressed == true){
-            if(keyH.upPressed == true){
-                //if(jumpVal == 0){
-                direction = "jump";
-                jumpVal = 300;
-              //}
-            }
-            else if(keyH.downPressed == true){
+            
+            if(keyH.downPressed == true){
                 direction = "standL";
                 
             }
@@ -100,6 +96,7 @@ public class Player extends Entity{
                 direction = "walkL";
                 
             }
+            
             else if(keyH.rightPressed == true){
                 direction = "walkR";
                 comInput = 6;
@@ -116,30 +113,49 @@ public class Player extends Entity{
             gp.cChecker.checkTile(this);
 
             if(collisionOn == false){
+                
                 switch(direction){
-                case "jump":
-                    worldY -= speed;
-                    acc--;
-                    break;
+                
                 case "standL":
                     worldY += speed;
                   
-                    acc--;
+                    //acc--;
                     break;
                 case "walkL":
                     worldX -= speed;
                    
-                    if(acc < 4){
-                      acc++;
-                    }
+                    //if(acc < 4){
+                      //acc++;
+                    //}
                     break;
                 case "walkR":
                     worldX += speed;
                    
                     if(acc < 4){
-                      acc++;
+                      //acc++;
                     }
                     break;
+                }
+                if(keyH.rightPressed == true && jumpVal == 0){
+                    if(keyH.upPressed == true){
+                        direction = "jumpR";
+                        worldY -= speed * 3;
+                        worldX += speed * 2;
+                        jumpVal = 100;
+                    }
+                        
+                }else if(keyH.leftPressed == true && jumpVal == 0){
+                    if(keyH.upPressed == true){
+                        direction = "jumpL";
+                        worldY -= speed * 3;
+                        worldX -= speed * 2;
+                        jumpVal = 100;
+                    }
+                            
+                }else if(keyH.upPressed == true && jumpVal == 0){
+                    direction = "jumpR";
+                    worldY -= speed * 3;
+                    jumpVal = 100;
                 }
             }
 
@@ -174,12 +190,19 @@ public class Player extends Entity{
         //g2.setColor(Color.white);
         //g2.fillRect(x, y, gp.tileSize, gp.tileSize);
         BufferedImage image = null;
+        
         switch(direction){
         case "standR":
             image = standR;
             break;
         case "standL":
             image = standL;
+            break;
+        case "jumpL":
+            image = jumpL;
+            break;
+        case "jumpR":
+            image = jumpR;
             break;
         case "walkR":
             if(spriteNum == 1){
