@@ -21,24 +21,29 @@ import entity.Impact;
 public class Player extends Entity{
     GamePanel gp;
     KeyHandler keyH;
+    public final int screenX;
+    public final int screenY;
     
-    
-    public Player(GamePanel gp, KeyHandler keyH, int x, int y){
+    public Player(GamePanel gp, KeyHandler keyH){
         this.gp = gp;
         this.keyH = keyH;
-        worldX = x;
-        worldY = y;
-        solidArea = new Rectangle(300, 100, 48, 48);
+        screenX = gp.screenWidth/2 - (gp.tileSize/2);
+        screenY = gp.screenHeight/2 - (gp.tileSize/2);
+        solidArea = new Rectangle(screenX, screenY, 48, 48);
         setDefaultValues();
         getPlayerImage();
     }
     public void setDefaultValues(){
         health = 5;
         acc = 1;
-        speed = 4;
+        speed = 7;
         grav = 0;
         jumpVal = 0;
         comInput = 0;
+        //worldX = gp.tileSize * 28;
+        //worldY = gp.tileSize * 8;
+        worldX = 300;
+        worldY = 100;
         direction = "standR";
         looking = "right";
     }
@@ -54,6 +59,9 @@ public class Player extends Entity{
             walkR2 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-2.png"));
             walkL3 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC L-3.png"));
             walkR3 = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Ob WC R-3.png"));
+
+            jump = ImageIO.read(getClass().getResourceAsStream("/Sprite Cranberry/Wall Test4.png"));
+
   
             //walkR = ImageIO.read(new File("/Sprite Cranberry/Ob WC R.gif"));
         }catch(IOException e){
@@ -67,8 +75,8 @@ public class Player extends Entity{
         if(jumpVal > 0){
           jumpVal--;
         }
-        solidArea.x = worldX;
-        solidArea.y = worldY;
+        //solidArea.x = worldX;
+        //solidArea.y = worldY;
         
             
         
@@ -115,16 +123,19 @@ public class Player extends Entity{
                     break;
                 case "standL":
                     worldY += speed;
+                  
                     acc--;
                     break;
                 case "walkL":
                     worldX -= speed;
+                   
                     if(acc < 4){
                       acc++;
                     }
                     break;
                 case "walkR":
                     worldX += speed;
+                   
                     if(acc < 4){
                       acc++;
                     }
@@ -194,7 +205,7 @@ public class Player extends Entity{
             break;
         }
         //g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
-        g2.drawImage(image, worldX, worldY, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
         g2.draw(solidArea);
     }
 }

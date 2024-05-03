@@ -79,8 +79,8 @@ public class TileManager {
             //this might be backwards
             int worldX = worldRow * gp.tileSize;
             int worldY = worldCol * gp.tileSize;
-            int screenX = worldX - gp.player.worldX + gp.player.screenX;
-            int screenY = worldY - gp.player.worldY + gp.player.screenY;
+            int screenX = worldX - gp.player.worldX; //+ gp.player.screenX;
+            int screenY = worldY - gp.player.worldY; //+ gp.player.screenY;
 
             //if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX && 
                //worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
