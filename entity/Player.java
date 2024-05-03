@@ -42,8 +42,8 @@ public class Player extends Entity{
         comInput = 0;
         //worldX = gp.tileSize * 28;
         //worldY = gp.tileSize * 8;
-        worldX = 300;
-        worldY = 100;
+        worldX = 500;
+        worldY = 500;
         direction = "standR";
         looking = "right";
     }
