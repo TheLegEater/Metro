@@ -67,6 +67,8 @@ public class Player extends Entity{
         if(jumpVal > 0){
           jumpVal--;
         }
+        solidArea.x = worldX;
+        solidArea.y = worldY;
         
             
         
