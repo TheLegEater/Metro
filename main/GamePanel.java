@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 import entity.Player;
 
-import entity.Ob;
+
 import entity.Impact;
 import tile.TileManager;
 

@@ -40,6 +40,7 @@ public class Player extends Entity{
         grav = 0;
         jumpVal = 0;
         comInput = 0;
+        clock = 0;
         //worldX = gp.tileSize * 28;
         //worldY = gp.tileSize * 8;
         worldX = 500;
@@ -47,6 +48,7 @@ public class Player extends Entity{
         direction = "standR";
         looking = "right";
     }
+    
     public void getPlayerImage(){
         try{
   
@@ -75,6 +77,13 @@ public class Player extends Entity{
         }
         if(jumpVal > 0){
           jumpVal--;
+        }
+        //100 is about 1.5 seconds
+        if(clock < 100){
+            clock++;
+        }else if(clock >= 100){
+            clock = 0;
+            //System.out.println("reset");
         }
         //solidArea.x = worldX;
         //solidArea.y = worldY;

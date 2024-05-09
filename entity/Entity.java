@@ -21,5 +21,6 @@ public class Entity {
     public boolean collisionOn = false;
     public int worldX, worldY;
     public int grav;
+    public int clock;
     
 }
