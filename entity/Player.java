@@ -36,11 +36,11 @@ public class Player extends Entity{
     public void setDefaultValues(){
         health = 5;
         acc = 1;
-        speed = 7;
+        speed = 4;
         grav = 0;
         jumpVal = 0;
         comInput = 0;
-        clock = 0;
+        clock = 1;
         //worldX = gp.tileSize * 28;
         //worldY = gp.tileSize * 8;
         worldX = 500;
@@ -71,19 +71,32 @@ public class Player extends Entity{
             e.printStackTrace();
         }
     }
-    public void update(){       
-        if(worldY != 525 && collisionOn == false){
-          worldY += grav;
-        }
-        if(jumpVal > 0){
-          jumpVal--;
-        }
+    public void time(){
         //100 is about 1.5 seconds
         if(clock < 100){
             clock++;
         }else if(clock >= 100){
             clock = 0;
             //System.out.println("reset");
+        }
+    }
+    public void update(){ 
+        
+        if(worldY != 525 && collisionOn == false){
+          worldY += grav;
+        }
+        if(jumpVal > 0){
+          jumpVal--;
+        }
+        
+        if(keyH.rightPressed == true){
+            time();
+            if(clock == 0 && speed < 5){
+                speed++;
+            }
+        }else if(keyH.rightPressed == false && speed > 0){
+                speed = 1;
+            
         }
         //solidArea.x = worldX;
         //solidArea.y = worldY;
