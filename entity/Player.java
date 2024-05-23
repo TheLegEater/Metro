@@ -36,7 +36,7 @@ public class Player extends Entity{
     public void setDefaultValues(){
         health = 5;
         acc = 1;
-        speed = 4;
+        speed = 1;
         grav = 0;
         jumpVal = 0;
         comInput = 0;
@@ -94,9 +94,16 @@ public class Player extends Entity{
             if(clock == 0 && speed < 5){
                 speed++;
             }
-        }else if(keyH.rightPressed == false && speed > 0){
-                speed = 1;
-            
+        }else if(keyH.leftPressed == true){
+            time();
+            if(clock == 0 && speed < 5){
+                speed++;
+            }
+        }else if(keyH.rightPressed == false && speed > 1 && keyH.leftPressed == false){
+            time();
+            if(clock == 0 && speed > 1){
+                speed--;
+            }
         }
         //solidArea.x = worldX;
         //solidArea.y = worldY;
